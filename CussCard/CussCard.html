@@ -1,0 +1,137 @@
+<html lang="en">
+
+  <head>
+
+    <title>CussOfTheDay</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script> 
+      
+    <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> </script>
+	
+	</head>
+	
+<body>
+<!--
+<div class="row" style="margin-top:100px;margin-left:20px">
+  <div class="col-sm-5">
+    <div class="card w-50 bg-dark text-white" style="height:100%">
+      <div class="card-body" style = "margin-top:30px">
+        <h5 class="card-text" style="font-style:oblique">Word <small style = "margin-left:3px; font-style:italic; font-size:xx-small">English</small></h5>
+		<small style = "margin-left:4px; font-style:italic">Subtext for header</small>		
+        <p class="card-text" style="margin-top:20px;">This is the meaning of the word.</p>
+	<p class="card-text" style = "margin-left:150px;font-size:small"> Swipe for sample usage ----&gt;</p>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<form id="myForm" action="/action_page.php">
+  <input type="text" name="fname" placeholder="Word" ><br>
+  <input type="text" name="lname" placeholder="Pronunciation"><br>
+  <input type="text" name="pname" placeholder="Country"><br>
+  <input type="text" name="qname" placeholder="Definition"><br>
+  Select Background:<br>
+  <select id="cars" name="cars">
+  <option value="BBWT">Black Background</option>
+  <option value="WBBT">White Background</option>
+
+</select>
+</form> 
+
+<p>Click the "Try it" button to display the value of the first element in the form.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+
+
+<div id="html-content-holder" class="container">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="card border-0"  id = "maincard" style = "height:350px;padding-top:15%">
+        <div class="card-body">
+          <h4 class="card-title" style = "margin-top:20px" id = "wordID"></h4>
+          <h6 class="card-subtitle mb-2 text-muted" style = "font-family:Lucida Console" id = "proID"></h6>
+          <h6 class="card-subtitle mb-2 text-muted" id = "countryID"></h6>
+          <p class="card-text" style="margin-top:15%" id = "definitionID"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myForm").elements[0].value;
+  var y = document.getElementById("myForm").elements[1].value;
+  var z = document.getElementById("myForm").elements[2].value;
+  var w = document.getElementById("myForm").elements[3].value;
+  var a = document.getElementById("myForm").elements[4].value;
+  //window.alert(a)
+  if (a=="BBWT")
+	{	var element = document.getElementById("maincard");
+		element.classList.add("bg-dark");
+		element.classList.add("text-white");
+	}
+	
+  document.getElementById("wordID").innerHTML = x;
+  document.getElementById("proID").innerHTML = y;
+  document.getElementById("countryID").innerHTML = z;
+  document.getElementById("definitionID").innerHTML = w;
+}
+</script>
+
+
+
+<input id="btn-Preview-Image" type="button"
+				value="Preview" /> 
+		
+	<a id="btn-Convert-Html2Image" href="#"> 
+		Download 
+	</a> 
+
+	<br/> 
+	
+	<h3>Preview :</h3> 
+	
+	<div id="previewImage"></div> 
+<script> 
+		$(document).ready(function() { 
+		
+			// Global variable 
+			var element = $("#html-content-holder"); 
+		
+			// Global variable 
+			var getCanvas; 
+
+			$("#btn-Preview-Image").on('click', function() { 
+				html2canvas(element, { 
+					onrendered: function(canvas) { 
+						$("#previewImage").append(canvas); 
+						getCanvas = canvas; 
+					} 
+				}); 
+			}); 
+
+			$("#btn-Convert-Html2Image").on('click', function() { 
+				var imgageData = 
+					getCanvas.toDataURL("image/png"); 
+			
+				// Now browser starts downloading 
+				// it instead of just showing it 
+				var newData = imgageData.replace( 
+				/^data:image\/png/, "data:application/octet-stream"); 
+			
+				$("#btn-Convert-Html2Image").attr( 
+				"download", "CussWord.png").attr( 
+				"href", newData); 
+			}); 
+		}); 
+	</script> 
+	
+</body>
+</html>
