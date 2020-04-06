@@ -1,6 +1,3 @@
-.square {
-    width: 100%;
-    padding-bottom: 100%;
-    background-size: cover;
-    background-position: center;
+.bg-black {
+    background-color: 	#000000
 }
